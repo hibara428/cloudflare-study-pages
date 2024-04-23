@@ -1,27 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div id="app">
+    <FieldView></FieldView>
+    <PostView v-for="key in posts" :key="key" :id="key"></PostView>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import PostView from "./components/PostView.vue";
+import FieldView from "./components/FieldView.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    PostView,
+    FieldView,
+  },
+  data: () => {
+    return {
+      posts: [] as string[],
+    };
   },
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.row {
+  margin: 0.75em;
 }
 </style>
